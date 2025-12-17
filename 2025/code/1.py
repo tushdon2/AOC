@@ -1,5 +1,4 @@
-from helpers import fetch
-from time import time
+from helpers import fetch, function_runner
 
 data = list(map(int, fetch("2025", "1").replace('R', '').replace('L', '-').split('\n')))
 
@@ -22,9 +21,5 @@ def part2():
     return cnt
 
 if __name__ == "__main__":
-    SOLS = [part1, part2]
-    for fn in SOLS:
-        st = time()
-        print(fn())
-        print(f"Ran {fn.__name__} in {time() - st:.4f} seconds")
+    function_runner(part1, part2)
 
