@@ -1,14 +1,18 @@
 from helpers import fetch, function_runner
 
 """
-The problem doesn't discuss what if two splitters are adjacent in a row, e.g. ".^..^^...."
-Will the new beam start from the nearest adjacent empty space? 
-.|..|.....      ->      .|..|.....           
-.^..^^....              |^||^^|...
-Or will it just stop for the adjacent splitter, assuming splitters work only if the beam comes to it from previous row?  
-.|..|.....      ->      .|..|.....           
-.^..^^....              |^||^^....
-Thankfully, such a case doesn't exist in the example or the test case.
+-   The problem doesn't discuss what if two splitters are adjacent in a row, e.g. ".^..^^...."
+    Will the new beam start from the nearest adjacent empty space? 
+    .|..|.....      ->      .|..|.....           
+    .^..^^....              |^||^^|...
+    Or will it just stop for the adjacent splitter, assuming splitters work only if the beam comes to it from previous row?  
+    .|..|.....      ->      .|..|.....           
+    .^..^^....              |^||^^....
+
+-   It also evades the case when a split beam hits Tachyon Manifold boundary, 
+    e.g. if splitter placement is like: "^......" and a beam hits it, the split beam can't go leftward
+
+Thankfully, such cases don't exist in the example or the test case.
 """
 
 lines = [[False if ch == '.' else True for ch in line] for line in fetch(2025, 7).strip().split("\n")]
