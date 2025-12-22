@@ -1,10 +1,10 @@
 from pathlib import Path
-from typing import Callable
+from typing import Callable, Union
 from time import time
 
 BASE_DIR = Path(__file__).parent.parent
 
-def fetch(year:str, day:str) -> str:
+def fetch(year:Union[str, int], day:Union[str, int]) -> str:
     file = f"{BASE_DIR}/{year}/inputs/{day}.txt"
     with open(file, 'r') as f:
         return f.read()
