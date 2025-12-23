@@ -91,11 +91,17 @@ def part2_efficient():
                                  _press_once_possibilities(buttons, len(joltage)), memo={}) 
                                  for joltage, buttons in zip(joltages, buttons_list))
 
+# PART 2 by GAUSSIAN ELIMINATION and FREE VARIABLES:
+# https://www.reddit.com/r/adventofcode/comments/1plzhps/2025_day_10_part_2_pivot_your_way_to_victory/
+# https://math.libretexts.org/Bookshelves/Linear_Algebra/Map%3A_Linear_Algebra_(Waldron_Cherney_and_Denton)/02%3A_Systems_of_Linear_Equations
+# Get Augmented matrix for Ax = b: A_aug = [A | b]
+# each col of A = vectorised buttons, x = count of button presses, b = joltage goals
+# get Row-Reduced-Echelon-Form: then get free variables from here
+# Get general solution of these set of equations: X = X_particular + sum(free_var_i * X_homogenous_i)
+# Minimise the sum of variables: on the constraint that each of them is positive and integral
+# Can use scipy.linprog to achieve this
 
 if __name__ == "__main__": 
     function_runner(part1, part2_efficient,
-                    # part2 # too much time
+                    # part2 # too much time 
                     )
-
-
-
